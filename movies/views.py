@@ -14,3 +14,13 @@ class MoviesView(View):
             'movies/movies.html',
             {'movie_list': movies}
         )
+
+class MovieDetailView(View):
+    """Полное описание фильма"""
+    def get(self, request, slug):
+        movie = Movie.objects.get(url=slug)
+        return render(
+            request,
+            'movies/moviesingle.html',
+            {'movie': movie}
+        )
